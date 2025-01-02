@@ -66,7 +66,7 @@ const RegisterPage = () => {
               profile_pic : ""
             })
 
-            navigate('/email')
+            navigate('/')
 
         }
     } catch (error) {
@@ -163,7 +163,7 @@ const RegisterPage = () => {
 
           </form>
 
-          <p className='my-3 text-center'>Already have account ? <Link to={"/email"} className='hover:text-primary font-semibold'>Login</Link></p>
+          <p className='my-3 text-center'>Already have account ? <Link to={"/"} className='hover:text-primary font-semibold'>Login</Link></p>
         </div>
     </div>
   )

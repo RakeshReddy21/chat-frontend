@@ -20,7 +20,7 @@ const CheckPasswordPage = () => {
 
   useEffect(()=>{
     if(!location?.state?.name){
-      navigate('/email')
+      navigate('/')
     }
   },[])
 
