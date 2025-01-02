@@ -87,6 +87,23 @@ const CheckEmailPage = () => {
 
           <p className='my-3 text-center'>New User ? <Link to={"/register"} className='hover:text-primary font-semibold'>Register</Link></p>
         </div>
+        <div className="bg-white mt-7 w-full max-w-md rounded overflow-hidden p-4 mx-auto text-center shadow-md">
+        <h1 className="text-xl font-bold text-primary mb-3">
+          Sample Login Credentials
+        </h1>
+        <ul className="list-none text-left space-y-2">
+          <li className="bg-gray-100 p-2 rounded">
+            <span className="font-semibold">Email:</span> test@gmail.com
+            <br />
+            <span className="font-semibold">Password:</span> 1234
+          </li>
+          <li className="bg-gray-100 p-2 rounded">
+            <span className="font-semibold">Email:</span> test1@gmail.com
+            <br />
+            <span className="font-semibold">Password:</span> 1234
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }
