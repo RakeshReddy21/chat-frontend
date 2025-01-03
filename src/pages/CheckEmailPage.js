@@ -57,6 +57,13 @@ const CheckEmailPage = () => {
           </button>
         </form>
 
+        <p className="my-3 text-center">
+          New User?{" "}
+          <Link to={"/register"} className="hover:text-primary font-semibold">
+            Register
+          </Link>
+        </p>
+
         <div className="space-y-3 space-x-32 mt-4">
         <button
           className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded mt-2 font-bold text-white leading-relaxed tracking-wide"
@@ -72,12 +79,7 @@ const CheckEmailPage = () => {
         </button>
         </div>
 
-        <p className="my-3 text-center">
-          New User?{" "}
-          <Link to={"/register"} className="hover:text-primary font-semibold">
-            Register
-          </Link>
-        </p>
+        
       </div>
     </div>
   );
