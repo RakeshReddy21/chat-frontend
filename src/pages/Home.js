@@ -6,6 +6,7 @@ import { logout, setOnlineUser, setSocketConnection, setUser } from '../redux/us
 import Sidebar from '../components/Sidebar'
 import logo from '../assets/logo.jpg'
 import io from 'socket.io-client'
+import { FaUserPlus } from "react-icons/fa";
 
 const Home = () => {
   const user = useSelector(state => state.user)
@@ -80,7 +81,10 @@ const Home = () => {
                 alt='logo'
               />
             </div>
-            <p className='text-lg mt-2 text-slate-500'>Select user to send message</p>
+            <p className="text-lg mt-2 text-slate-500 flex items-center gap-x-2">
+              Click on the icon <FaUserPlus /> to select user to send the
+              message
+            </p>
         </div>
     </div>
   )
