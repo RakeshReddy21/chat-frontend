@@ -69,13 +69,13 @@ const CheckEmailPage = () => {
           className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded mt-2 font-bold text-white leading-relaxed tracking-wide"
           onClick={() => handleQuickLogin("test@gmail.com")}
         >
-          User Login 1
+          Guest User 1
         </button>
         <button
           className="ml-auto bg-secondary text-lg px-4 py-1 hover:bg-primary rounded mt-2 font-bold text-white leading-relaxed tracking-wide mt-2"
           onClick={() => handleQuickLogin("test1@gmail.com")}
         >
-          User Login 2
+          Guest User 2
         </button>
         </div>
 
