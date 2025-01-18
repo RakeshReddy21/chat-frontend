@@ -63,7 +63,7 @@ const CheckEmailPage = () => {
             Register
           </Link>
         </p>
-
+        <h1 className="text-center mt-5 font-semibold">Guest Login Credentials</h1>
         <div className="space-y-3 space-x-32 mt-4">
         <button
           className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded mt-2 font-bold text-white leading-relaxed tracking-wide"
