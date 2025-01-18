@@ -75,19 +75,19 @@ const CheckPasswordPage = () => {
           </button>
         </form>
         <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-primary font-semibold'>Forgot password ?</Link></p>
-
+        <h1 className="text-center mt-5 font-semibold">Guest Login Credentials</h1>
         <div className="space-y-3 space-x-32 mt-4">
       <button
         className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
         onClick={() => handleQuickLogin("1234")}
       >
-        User Login 1
+        Guest User 1
       </button>
       <button
         className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
         onClick={() => handleQuickLogin("1234")}
       >
-        User Login 2
+        Guest User 2
       </button>
     </div>
 
