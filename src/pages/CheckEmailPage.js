@@ -95,7 +95,7 @@ const CheckEmailPage = () => {
           {guestUsers.map((user, index) => (
             <button
               key={index}
-              className="bg-secondary text-base px-3 py-1 hover:bg-primary rounded-lg font-semibold text-white leading-relaxed tracking-wide w-full sm:w-auto"
+              className="bg-primary text-base px-3 py-1 hover:bg-secondary rounded-lg font-semibold text-white leading-relaxed tracking-wide w-full sm:w-auto"
               onClick={() => handleQuickLogin(user)}
             >
               {user.label}
