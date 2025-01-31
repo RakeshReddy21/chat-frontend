@@ -43,11 +43,11 @@ const CheckEmailPage = () => {
       toast.success(response.data.message);
 
       if (response.data.success) {
-        navigate("/password", { 
+        navigate("/password", {
           state: {
             ...response?.data?.data,
-            guestPassword: user.password 
-          }
+            guestPassword: user.password,
+          },
         });
       }
     } catch (error) {
@@ -88,12 +88,14 @@ const CheckEmailPage = () => {
             Register
           </Link>
         </p>
-        <h1 className="text-center mt-5 font-semibold">Guest Login Credentials</h1>
-        <div className="mt-4 flex flex-col gap-4 items-center">
+        <h1 className="text-center mt-5 font-semibold">
+          Guest Login Credentials
+        </h1>
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
           {guestUsers.map((user, index) => (
             <button
               key={index}
-              className="bg-secondary w-full max-w-[200px] text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
+              className="bg-secondary text-base px-3 py-1 hover:bg-primary rounded-lg font-semibold text-white leading-relaxed tracking-wide w-full sm:w-auto"
               onClick={() => handleQuickLogin(user)}
             >
               {user.label}
