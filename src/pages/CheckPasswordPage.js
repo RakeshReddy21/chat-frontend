@@ -18,6 +18,37 @@ const CheckPasswordPage = () => {
     }
   }, [location, navigate]);
 
+  useEffect(() => {
+    const autoLoginWithGuestPassword = async () => {
+      if (location?.state?.guestPassword) {
+        try {
+          const response = await axios({
+            method: "post",
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/password`,
+            data: {
+              userId: location?.state?._id,
+              password: location.state.guestPassword,
+            },
+            withCredentials: true,
+          });
+
+          toast.success(response.data.message);
+
+          if (response.data.success) {
+            dispatch(setToken(response?.data?.token));
+            localStorage.setItem("token", response?.data?.token);
+            navigate("/home", { replace: true });
+          }
+        } catch (error) {
+          toast.error(error?.response?.data?.message);
+          navigate(".", { state: {}, replace: true });
+        }
+      }
+    };
+
+    autoLoginWithGuestPassword();
+  }, [location, navigate, dispatch]);
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
@@ -50,37 +81,6 @@ const CheckPasswordPage = () => {
       toast.error(error?.response?.data?.message);
     }
   };
-
-  const handleQuickLogin = async (password) => {
-    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`;
-
-    try {
-      const response = await axios({
-        method: "post",
-        url: URL,
-        data: {
-          userId: location?.state?._id,
-          password,
-        },
-        withCredentials: true,
-      });
-
-      toast.success(response.data.message);
-
-      if (response.data.success) {
-        dispatch(setToken(response?.data?.token));
-        localStorage.setItem("token", response?.data?.token);
-        navigate("/home");
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
-  };
-
-  const guestLogins = [
-    { label: "Guest User 1", password: "1234" },
-    { label: "Guest User 2", password: "1234" },
-  ];
 
   return (
     <div className="mt-5">
@@ -119,19 +119,6 @@ const CheckPasswordPage = () => {
             Forgot password?
           </Link>
         </p>
-
-        <h1 className="text-center mt-5 font-semibold">Guest Login Credentials</h1>
-        <div className="mt-4 flex gap-x-32">
-          {guestLogins.map((guest, index) => (
-            <button
-              key={index}
-              className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
-              onClick={() => handleQuickLogin(guest.password)}
-            >
-              {guest.label}
-            </button>
-          ))}
-        </div>
       </div>
     </div>
   );
