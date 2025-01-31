@@ -30,25 +30,30 @@ const CheckEmailPage = () => {
     }
   };
 
-  const handleQuickLogin = async (email) => {
+  const guestUsers = [
+    { email: "test@gmail.com", label: "Guest User 1", password: "1234" },
+    { email: "test1@gmail.com", label: "Guest User 2", password: "1234" },
+  ];
+
+  const handleQuickLogin = async (user) => {
     const URL = `${process.env.REACT_APP_BACKEND_URL}/api/email`;
 
     try {
-      const response = await axios.post(URL, { email });
+      const response = await axios.post(URL, { email: user.email });
       toast.success(response.data.message);
 
       if (response.data.success) {
-        navigate("/password", { state: response?.data?.data });
+        navigate("/password", { 
+          state: {
+            ...response?.data?.data,
+            guestPassword: user.password 
+          }
+        });
       }
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
   };
-
-  const guestUsers = [
-    { email: "test@gmail.com", label: "Guest User 1" },
-    { email: "test1@gmail.com", label: "Guest User 2" },
-  ];
 
   return (
     <div className="mt-5">
@@ -84,19 +89,17 @@ const CheckEmailPage = () => {
           </Link>
         </p>
         <h1 className="text-center mt-5 font-semibold">Guest Login Credentials</h1>
-        <div className="mt-4 flex gap-x-32">
+        <div className="mt-4 flex flex-col gap-4 items-center">
           {guestUsers.map((user, index) => (
             <button
               key={index}
-              className="bg-secondary text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
-              onClick={() => handleQuickLogin(user.email)}
+              className="bg-secondary w-full max-w-[200px] text-lg px-4 py-1 hover:bg-primary rounded font-bold text-white leading-relaxed tracking-wide"
+              onClick={() => handleQuickLogin(user)}
             >
               {user.label}
             </button>
           ))}
         </div>
-
-        
       </div>
     </div>
   );
